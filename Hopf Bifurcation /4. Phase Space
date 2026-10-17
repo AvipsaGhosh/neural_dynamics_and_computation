@@ -1,0 +1,15 @@
+# ==============================================================================
+# 4. PHASE-SPACE PROTOTYPE REGIMES
+# ==============================================================================
+
+# Subcritical regime (Z < 0): Damped oscillations converging to a stable focus
+Z_sub = -0.2
+E_sub, I_sub = simulate_hopf(Z=Z_sub, init_state=(0.05, 0.0))
+
+# Supercritical regime (Z > 0): Unstable origin blowing out to a stable limit cycle
+Z_super = 0.25
+E_super, I_super = simulate_hopf(Z=Z_super, init_state=(0.05, 0.0))
+
+# Compute temporal radius trajectory for the limit cycle regime
+radius_super = np.sqrt(E_super**2 + I_super**2)
+time_vec = np.arange(STEPS) * DT
